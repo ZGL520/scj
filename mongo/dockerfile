@@ -1,0 +1,14 @@
+FROM mongo
+
+RUN mkdir /home/data
+
+RUN mkdir /home/data/mongodb
+
+RUN mkdir -p /data/db /data/configdb \
+	&& chown -R mongodb:mongodb /data/db /data/configdb
+
+VOLUME /home/data/mongodb /data/configdb
+
+EXPOSE 27017
+
+CMD ["mongod"]
